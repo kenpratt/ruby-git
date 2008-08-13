@@ -301,9 +301,9 @@ module Git
       hsh
     end
             
-    def ls_files
+    def ls_files(opts=nil)
       hsh = {}
-      command_lines('ls-files', '--stage').each do |line|
+      command_lines('ls-files', opts || [ '--stage' ]).each do |line|
         (info, file) = line.split("\t")
         (mode, sha, stage) = info.split
         hsh[file] = {:path => file, :mode_index => mode, :sha_index => sha, :stage => stage}

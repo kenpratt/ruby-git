@@ -422,8 +422,12 @@ module Git
     end
     
     
-    def ls_files
-      self.lib.ls_files
+    def ls_files(opts=nil)
+      self.lib.ls_files(opts)
+    end
+
+    def ls_unmerged_files
+      ls_files("--unmerged")
     end
 
     def with_working(work_dir)
